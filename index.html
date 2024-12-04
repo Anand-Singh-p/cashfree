@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Payment Status</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 0;
+            padding: 50px;
+        }
+    </style>
+</head>
+<body>
+    <h1>Payment Status</h1>
+    <div id="status">
+        <!-- Payment status will be displayed here -->
+    </div>
+    <script>
+        // Extract parameters from the URL
+        const params = new URLSearchParams(window.location.search);
+        const orderId = params.get('order_id');
+        const paymentStatus = params.get('status');
+
+        // Display payment status
+        const statusDiv = document.getElementById('status');
+        if (paymentStatus === 'success') {
+            statusDiv.innerHTML = `<p style="color: green;">Payment Successful!<br>Order ID: ${orderId}</p>`;
+        } else {
+            statusDiv.innerHTML = `<p style="color: red;">Payment Failed.<br>Order ID: ${orderId}</p>`;
+        }
+    </script>
+</body>
+</html>
